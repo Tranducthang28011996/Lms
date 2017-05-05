@@ -1,0 +1,11 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+
+.navbar .active a {
+    color: #fff !important;
+    background-color: brown !important;
+}

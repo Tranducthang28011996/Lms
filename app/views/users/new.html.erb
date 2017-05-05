@@ -1,0 +1,33 @@
+<div class="sign-form">
+  <h1> Sign Up </h1>
+
+  <% if @user.errors.any? %>
+      <ul class="">
+        <% for message_error in @user.errors.full_messages %>
+            <li class="text-danger"><%= message_error %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <%= form_for @user do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-control' %>
+
+    </br>
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+
+
+    </br>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    </br>
+    <%= f.submit "Save", class: 'btn btn-primary', style: "min-width: 150px; float: right" %>
+  <% end %>
+
+  <div style="margin-top: 60px; text-align: right;">
+    Already have an account?
+    <b><%= link_to "Login now", login_path %></b>
+  </div>
+</div>	

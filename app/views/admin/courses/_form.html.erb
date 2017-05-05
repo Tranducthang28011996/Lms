@@ -1,0 +1,38 @@
+
+
+<div class="col-md-offset-3" style="margin-top: 50px">
+  <h2> New course </h2>
+
+  <%= form_for [:admin, @course] do |f| %>
+
+      <% if flash[:error] %>
+        <div class="text-danger">
+          <% flash[:error].each do |msg| %>
+            <p> <%= msg %> </p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="row col-md-6">
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit 'Create', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+
+  <% end %>
+</div>

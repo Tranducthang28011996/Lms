@@ -1,0 +1,10 @@
+de:
+  courses:
+    index:
+      title: 'Courses de'
+  activerecord:
+    attributes:
+      user:
+        username: 'de user name'
+        email: 'de email'
+        password: 'de password'

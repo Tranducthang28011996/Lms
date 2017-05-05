@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lms</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if @current_user && @current_user.admin? %>
+      <%= render 'shared/sidebar' %>
+    <% end %>
+
+    <div class="container <%= @current_user ? 'active-user' : '' %>">
+      <%= render '/shared/header' %>
+
+      <div style="margin-top: 53px">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render '/shared/footer' %>
+  </body>
+</html>

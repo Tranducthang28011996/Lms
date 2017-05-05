@@ -1,0 +1,17 @@
+<%#= @enrolled_courses.count %>
+
+<% @enrolled_courses.each do |course| %>
+
+    <div class="row">
+      <div class="col-md-3">
+        <%= image_tag course.image, width: '100%', class: 'img img-responsive' %>
+      </div>
+
+      <div class="col-md-9">
+        <h2> <%= course.name %> </h2>
+        <p> <%= course.description %> </p>
+        <%= link_to "Go to course", my_course_path(course.id) %>
+      </div>
+    </div>
+    <br>
+<% end %>

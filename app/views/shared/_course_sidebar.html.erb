@@ -1,0 +1,19 @@
+<!-- Sidebar -->
+<!-- Sidebar -->
+<div id="sidebar-wrapper" style="top: 0px">
+  <div class="list-group">
+
+    <a class="list-group-item">
+      <%= course.name %>
+      <span id="menu-toggle" class="glyphicon glyphicon-align-justify"></span>
+    </a>
+
+    <% lessons.each do |lesson| %>
+        <%= link_to lesson_path(course_id: course.id, id: lesson.id),
+                    class: 'list-group-item' do %>
+            <%= lesson.name %>
+        <% end %>
+    <% end %>
+
+  </div>
+</div>

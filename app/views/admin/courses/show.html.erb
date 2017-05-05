@@ -1,0 +1,23 @@
+<div class="container">
+  <h2><%= @course.name %></h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pending_requests.each do |request| %>
+          <tr id="approve-btn-<%= request.id %>" >
+            <td><%= request.student.username %></td>
+            <td>
+              <a class="request-approve" data-id="<%= request.id %>">Approve</a>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

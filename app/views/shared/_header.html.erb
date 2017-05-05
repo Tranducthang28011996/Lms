@@ -1,0 +1,104 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <%= link_to "Home", root_path %>
+        </li>
+
+        <li><a href="#">About</a></li>
+      </ul>
+
+      <!--<form class="navbar-form navbar-left" role="search">-->
+      <%= form_tag courses_search_path, class: 'navbar-form navbar-left' do %>
+        <div class="form-group">
+          <input type="text" name="query" id="course_search" class="form-control"
+                 placeholder="Enter course name" style="width: 300px;">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      <% end %>
+
+      <% if @current_user %>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="switch-language">
+              <%= render 'shared/switch_language' %>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b><%= @current_user.username %></b> <span class="caret"></span></a>
+
+              <ul id="login-dp" class="dropdown-menu small">
+                  <div class="row">
+                    <div class="col-md-9 col-md-offset-1">
+                      <li class="navright-item"><%= link_to 'Dashboard', dashboard_path %></li>
+                      <li class="navright-item"><%= link_to 'Profile', "#" %></li>
+                      <li class="navright-item"><%= link_to 'Logout', sessions_logout_path, method: :delete, class: 'text-danger' %></li>
+                      <br />
+                    </div>
+                  </div>
+              </ul>
+            </li>
+          </ul>
+      <% else %>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <p class="navbar-text">
+                <%= render 'shared/switch_language' %>
+              </p>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+              <ul id="login-dp" class="dropdown-menu">
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      Login via
+                      <div class="social-buttons">
+                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                        <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                      </div>
+                      or
+
+                      <%= form_tag({controller: 'sessions', action: 'create'}, method: :post, class: 'form') do %>
+                          <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                            <%= text_field_tag :username_or_email, nil, class: 'form-control', placeholder: 'Email address' %>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                            <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
+                          </div>
+
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                          </div>
+                      <% end %>
+                    </div>
+
+                    <div class="bottom text-center">
+                      New here ? <%= link_to raw("<b>Join Us</b>"), new_user_path %>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+      <% end %>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

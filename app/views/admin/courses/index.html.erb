@@ -1,0 +1,47 @@
+<div class="container">
+  <% if flash[:notice] %>
+      <div class="text-success">
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+
+  <h2>
+    <div class="pull-left">Courses</div>
+    <div class="pull-right">
+      <%= link_to 'New Course', new_admin_course_path %>
+    </div>
+  </h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Total Requests</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.name %></td>
+          <td>
+            <%= image_tag course.image.thumb.url  %>
+          </td>
+          <td>
+            <%= course.total_request %>
+          </td>
+
+          <td><%= course.description %></td>
+          <td>
+            <%= link_to "View", admin_course_path(course.id) %>
+            <%= link_to "Edit", "#" %>
+            <%= link_to "Delete", "#" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
