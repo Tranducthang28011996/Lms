@@ -21,7 +21,10 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* App using:
+	#Background job, mailer…
+	#File uploading(file , image)
+	#I18n
 
 # Lms
-# Lms
+
